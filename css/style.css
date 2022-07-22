@@ -1,0 +1,39 @@
+.top-nav {
+    display: flex;
+    overflow: hidden;
+    background-color: yellow;
+    justify-content: space-between;
+}
+
+.top-nav img {
+    height: 60px;
+    vertical-align: middle;
+    align-content: center;
+}
+
+.top-nav img:hover {
+ background-color: white;
+}
+
+.top-nav h1 {
+    justify-content: center;
+    height: 100%;
+}
+
+.top-nav a {
+    font-weight: bold;
+    float: left;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+body {
+    background-color: green;
+}
+
+main {
+    background-color: white;
+}
