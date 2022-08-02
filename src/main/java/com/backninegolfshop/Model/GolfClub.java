@@ -1,10 +1,8 @@
 package com.backninegolfshop.Model;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
-public class SaleItem {
+public class GolfClub {
     private int saleId;
     private int manufacturerId;
     private int modelId;
@@ -12,8 +10,15 @@ public class SaleItem {
     private int serialNumber;
     private String status;
     private BigDecimal price;
+    private String condition;
 
-    public SaleItem(int saleId, int manufacturerId, int modelId, int club_type_id, int serialNumber, String status, BigDecimal price) {
+    //Default Constructor that takes no arguments
+    public GolfClub() {
+
+    }
+
+    //Full Argument Constructor
+    public GolfClub(int saleId, int manufacturerId, int modelId, int club_type_id, int serialNumber, String status, BigDecimal price, String condition) {
         this.saleId = saleId;
         this.manufacturerId = manufacturerId;
         this.modelId = modelId;
@@ -21,10 +26,7 @@ public class SaleItem {
         this.serialNumber = serialNumber;
         this.status = status;
         this.price = price;
-    }
-
-    public SaleItem() {
-
+        this.condition = condition;
     }
 
     public int getSaleId() {
@@ -81,5 +83,13 @@ public class SaleItem {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 }

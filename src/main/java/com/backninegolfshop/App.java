@@ -1,13 +1,13 @@
 package com.backninegolfshop;
 
-import com.backninegolfshop.dao.JdbcSaleItemDao;
-import com.backninegolfshop.dao.SaleItemDao;
+import com.backninegolfshop.dao.JdbcGolfClubDao;
+import com.backninegolfshop.dao.GolfClubDao;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.sql.DataSource;
 
 public class App {
-    private final SaleItemDao saleItemDao;
+    private final GolfClubDao golfClubDao;
 
     public static void main(String[] args) {
             BasicDataSource dataSource = new BasicDataSource();
@@ -17,6 +17,6 @@ public class App {
     }
 
     public App(DataSource dataSource) {
-        saleItemDao = new JdbcSaleItemDao(dataSource);
+        golfClubDao = new JdbcGolfClubDao(dataSource);
     }
 }

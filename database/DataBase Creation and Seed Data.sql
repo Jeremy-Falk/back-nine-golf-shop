@@ -1,13 +1,14 @@
 DROP TABLE IF EXISTS sale_item, manufacturer, model, club_type CASCADE;
 
-CREATE TABLE sale_item (
+CREATE TABLE golf_club (
 	sale_id serial PRIMARY KEY,
 	manufacturer_id integer NOT NULL,
 	model_id integer NOT NULL,
 	club_type_id integer NOT NULL,
 	serial_number varchar(20),
 	status varchar(20) NOT NULL,
-	price numeric(6,2) NOT NULL
+	price numeric(6,2) NOT NULL,
+	condition varchar(20) NOT NULL
 );
 
 CREATE TABLE manufacturer (
@@ -28,9 +29,11 @@ CREATE TABLE club_type (
 	club_type_name VARCHAR(50)
 );
 
-ALTER TABLE sale_item ADD CONSTRAINT FK_manufacturer FOREIGN KEY (manufacturer_id) REFERENCES manufacturer(manufacturer_id);
-ALTER TABLE sale_item ADD CONSTRAINT FK_model FOREIGN KEY (model_id) REFERENCES model(model_id);
-ALTER TABLE sale_item ADD CONSTRAINT FK_club_type FOREIGN KEY (club_type_id) REFERENCES club_type(club_type_id);
+
+ALTER TABLE golf_club ADD CONSTRAINT FK_manufacturer FOREIGN KEY (manufacturer_id) REFERENCES manufacturer(manufacturer_id);
+ALTER TABLE golf_club ADD CONSTRAINT FK_model FOREIGN KEY (model_id) REFERENCES model(model_id);
+ALTER TABLE golf_club ADD CONSTRAINT FK_club_type FOREIGN KEY (club_type_id) REFERENCES club_type(club_type_id);
+ALTER TABLE golf_club ADD CONSTRAINT chk_condition CHECK (condition in ('NEW', 'MINT', 'ABOVE AVERAGE', 'AVERAGE', 'BELOW AVERAGE', 'P0OR'));
 ALTER TABLE model ADD CONSTRAINT UQ_model_name_gender UNIQUE (model_name, gender);
 
 --INSERT Club Types
@@ -397,6 +400,6 @@ INSERT INTO model(manufacturer_id, model_name, gender) VALUES('20', 'Exotics Win
 
 --Insert Sample Clubs
 --  sale_id, manufacturer_id, model_id, club_type_id, serial_number, status, price
-INSERT INTO sale_item(manufacturer_id, model_id, club_type_id, serial_number, status, price)
-VALUES('12', '230', '6', '123456', 'For Sale', '350.00' )
+INSERT INTO golf_club(manufacturer_id, model_id, club_type_id, serial_number, status, price, condition)
+VALUES('12', '230', '6', '123456', 'For Sale', '350.00', 'AVERAGE')
 
